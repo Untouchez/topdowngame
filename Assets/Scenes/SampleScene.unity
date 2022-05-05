@@ -616,8 +616,8 @@ MonoBehaviour:
   pickup: {fileID: 6752019120257490191, guid: d31f5a948d9474a4785af0f602e1ce48, type: 3}
   metalNodes: 5
   stoneNodes: 5
-  trees: 6
-  pickups: 15
+  trees: 20
+  pickups: 2
 --- !u!1 &580106024
 GameObject:
   m_ObjectHideFlags: 0
