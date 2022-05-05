@@ -191,13 +191,13 @@ Material:
     - _AlphaToMaskInspectorValue: 0
     - _Anisotropy: 0
     - _BendDelta: 0
-    - _BladeBendCurve: 2
+    - _BladeBendCurve: 1
     - _BladeBendDistance: 0.38
-    - _BladeHeightMax: 1.5
-    - _BladeHeightMin: 1
+    - _BladeHeightMax: 0.77
+    - _BladeHeightMin: 0.2
     - _BladeSegments: 1
     - _BladeWidthMax: 0.1
-    - _BladeWidthMin: 0.02
+    - _BladeWidthMin: 0.1
     - _Blend: 0
     - _BlendMode: 0
     - _BumpScale: 1
@@ -313,7 +313,7 @@ Material:
     - _SupportDecals: 1
     - _Surface: 0
     - _SurfaceType: 0
-    - _TessellationGrassDistance: 0.01
+    - _TessellationGrassDistance: 0.197
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
@@ -339,7 +339,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.10980393, g: 0.32156864, b: 0.16470589, a: 0}
+    - _BaseColor: {r: 0.0924528, g: 0.46226418, b: 0, a: 0}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 0}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
@@ -352,7 +352,7 @@ Material:
     - _SpecColor: {r: 0.19999993, g: 0.19999993, b: 0.19999993, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _TipColor: {r: 0.10760058, g: 0.5849056, b: 0.20523117, a: 1}
+    - _TipColor: {r: 0.20833337, g: 1, b: 0, a: 1}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}

@@ -68,8 +68,6 @@ public class MapManager : MonoBehaviour
     public void SpawnLand(Vector3 pos)
     {
         GameObject plane = Instantiate(environment, pos, environment.transform.rotation,transform);
-        plane.GetComponent<MeshRenderer>().materials[1].SetColor("Base Color", Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f));
-        plane.GetComponent<MeshRenderer>().materials[1].SetColor("Tip Color", Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f));
 
         for (int i=0; i < stoneNodes; i++)
         {

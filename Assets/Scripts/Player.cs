@@ -39,12 +39,23 @@ public class Player : MonoBehaviour
         HandleAttack();
 
         Sprint();
-        if(input != Vector3.zero)
+        Roll();
+        if (input != Vector3.zero)
         {
             CheckForItems();
         }
     }
 
+    public void Roll()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            anim.SetFloat("hitX", Input.GetAxisRaw("Horizontal"));
+            anim.SetFloat("hitY", Input.GetAxisRaw("Vertical"));
+
+            anim.SetTrigger("roll");
+        }
+    }
     public void CheckForItems()
     {
         foreach(Transform child in nearby)
