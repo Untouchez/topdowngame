@@ -1,14 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
     public static Player instance;
-   
+
     [Header("References")]
+    public AudioSource audioSource;
+    public AudioClip[] grassSounds;
     public Inventory inventory;
     public Animator anim;
+    public Animator bowAnim;
+    public GameObject bow;
+    public Transform arrowSpawn;
+    public Projectile arrow;
+
     public Collider rf;
     public Collider lf;
 
@@ -16,7 +24,8 @@ public class Player : MonoBehaviour
     public float rotateSpeed;
     public bool isAttacking;
     public bool isSprint;
-    public bool isLock;
+    public bool hasBow;
+    public float bowForce;
     public float pickupRange;
 
     Vector3 input;
@@ -29,6 +38,7 @@ public class Player : MonoBehaviour
     public void Start()
     {
         CF = CameraFollow.instance;
+        bow.SetActive(hasBow);
     }
 
     // Update is called once per frame
@@ -45,6 +55,7 @@ public class Player : MonoBehaviour
             CheckForItems();
         }
     }
+   
 
     public void Roll()
     {
@@ -56,6 +67,7 @@ public class Player : MonoBehaviour
             anim.SetTrigger("roll");
         }
     }
+
     public void CheckForItems()
     {
         foreach(Transform child in nearby)
@@ -93,8 +105,14 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            isAttacking = true;
             anim.SetTrigger("attack");
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            hasBow = !hasBow;
+            bow.SetActive(hasBow);
+            anim.SetBool("bow", hasBow);
+            CF.lockedOn = hasBow;
         }
     }
 
@@ -102,12 +120,8 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            CF.lockedOn = false;
-            CF.lockOnTarget = null;
-            isLock = false;
             isSprint = true;
             anim.SetBool("sprint", isSprint);
-            anim.SetBool("lock", isLock);
         }
         else
         {
@@ -176,11 +190,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void LockOn(bool val)
-    {
-        anim.SetBool("lock", val);
-    }
-
     #region Events
     public void Anticipation()
     {
@@ -208,12 +217,29 @@ public class Player : MonoBehaviour
 
     public void FootR()
     {
-
+        audioSource.clip = grassSounds[Random.Range(0, grassSounds.Length)];
+        audioSource.Play();
     }
 
     public void FootL()
     {
+        audioSource.clip = grassSounds[Random.Range(0, grassSounds.Length)];
+        audioSource.Play();
+    }
 
+    public void Draw()
+    {
+        bowAnim.Play("Draw", 0, 0);
+    }
+
+    public void Fire()
+    {
+        bowAnim.Play("Fire", 0, 0);
+        Projectile newArrow = Instantiate(arrow, arrowSpawn.position, arrowSpawn.rotation);
+        Vector3 destination = (CF.lookAt.position - arrowSpawn.position).normalized * 25f;
+        //Vector3 destination = transform.forward * 50f;
+        destination.y = 1f;
+        newArrow.rb.AddForce(transform.forward* bowForce);
     }
     #endregion
 }

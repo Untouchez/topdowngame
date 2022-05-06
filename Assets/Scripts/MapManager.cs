@@ -97,7 +97,7 @@ public class MapManager : MonoBehaviour
             Vector3 randomRot = new Vector3(0, Random.Range(-25, 25), 0);
 
             GameObject newPickUp = Instantiate(pickup, newPos + pos, environment.transform.rotation * Quaternion.Euler(randomRot), plane.transform);
-            newPickUp.transform.localScale = Vector3.one * Random.Range(1, 2);
+            newPickUp.transform.localScale = Vector3.one * Random.Range(2, 3);
         }
     }
 
